@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html>
+<head>
+	<link rel="stylesheet" href="css/mobile-angular-ui-base.min.css">
+	<link rel="stylesheet" href="css/mobile-angular-ui-desktop.min.css">
+	<link rel="stylesheet" href="mcasimir-mobile-angular-ui-f35e99b\demo\demo.css">
+	<script src="js/angular.min.js"></script>
+	<script src="js/angular-route.min.js"></script>
+	<script src="js/angular-touch.min.js"></script>
+	<script src="js/mobile-angular-ui.min.js"></script>
+	<script src="js/gallery.js"></script>
+	
+</head>
+<body ng-app="GalleryModule">
+<div id="carousel-example" class="carousel">
+      <div ng-controller="GalleryController as gallery" class="carousel-inner">
+        <div  ng-repeat="image in gallery.images" href="" class="item active" style="overflow-y:auto;" carousel-example-item>
+          <div>
+			<div class="thumbnail"><img ng-src="{{image.url}}"/> <h3>{{image.name}}</h3></div>
+			
+			<div class="lead"><img src="images/thumbs_up.gif" ng-click="gallery.faveImage(image)"/> {{image.favorite}}</div>
+			<div id="tabSection" ng-controller="TabController as tab">
+				<ul id="tabDiv" class="btn-group nav nav-pills">
+					<li ng-class="{active:tab.isSet(1)}" class="btn btn-default" id="description"><a href ng-click="tab.setTab(1)">Description</a></li>
+					<li ng-class="{active:tab.isSet(2)}" class="btn btn-default" id="comments"><a href ng-click="tab.setTab(2)">Comments</a></li>
+				</ul>
+				<image-description ng-show='tab.isSet(1)'></image-description>
+				
+				<image-comments ng-show='tab.isSet(2)'></image-comments>
+			</div>
+          </div>
+        </div>
+      </div>
+</div>
+</body>
+</html>

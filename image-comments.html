@@ -1,0 +1,27 @@
+<div><div ng-repeat="comment in image.comments">
+<blockquote>
+  <p>{{comment.text}}</p>
+  <small>by <cite title="Comment Author">{{comment.by}}</cite></small>
+</blockquote>
+</div>
+
+<form name="reviewForm" ng-submit="commentCtrl.addComment(image)">
+  <!--  Live Preview -->
+  <blockquote ng-show="commentCtrl.hasComments()">
+    <p>{{commentCtrl.comment.text}}</p>
+	<small>by <cite title="Comment Author">{{commentCtrl.comment.by}}</cite></small>
+  </blockquote>
+
+  <!--  Review Form -->
+  <h4>Submit a Comment</h4>
+  <fieldset class="form-group">
+    <textarea ng-model="commentCtrl.comment.text" class="form-control" placeholder="What do you think of this image??" title="Review"></textarea>
+  </fieldset>
+  <fieldset class="form-group">
+    <input ng-model="commentCtrl.comment.by" type="input" class="form-control" placeholder="Enter your name" title="Name" />
+  </fieldset>
+  <fieldset class="form-group">
+    <input type="submit" class="btn btn-primary pull-right" value="Submit Review" />
+  </fieldset>
+</form
+</div>
